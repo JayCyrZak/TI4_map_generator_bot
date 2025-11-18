@@ -809,7 +809,7 @@ public class Helper {
         }
         for (String planet : planets) {
 
-            if (planet.contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 Button button = Buttons.red("spend_" + planet, getPlanetRepresentation(planet, game));
                 planetButtons.add(button);
                 continue;
@@ -879,7 +879,7 @@ public class Helper {
         player.resetProducedUnits();
         UnitKey unitKey = Mapper.getUnitKey(AliasHandler.resolveUnit(unit), player.getColorID());
         for (String planet : planets) {
-            if (planet.contains("ghoti") || planet.contains("custodia")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             if (game.getTileFromPlanet(planet) != player.getHomeSystemTile()) {
@@ -2323,7 +2323,7 @@ public class Helper {
         String finsFactionCheckerPrefix = "FFCC_" + player.getFaction() + "_";
         if (mahact == null) {
             for (String planet : planets) {
-                if ("ghoti".equalsIgnoreCase(planet) || planet.contains("custodia")) {
+                if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                     continue;
                 }
                 Tile tile = game.getTileFromPlanet(planet);

@@ -1219,8 +1219,7 @@ public class ButtonHelperFactionSpecific {
             return buttons;
         }
         for (String planet : hacan.getPlanetsAllianceMode()) {
-            if (planet.contains("custodia")
-                    || planet.contains("ghoti")
+            if (Constants.OFF_TILE_PLANETS.contains(planet)
                     || ButtonHelper.getUnitHolderFromPlanetName(planet, game) == null) {
                 continue;
             }
@@ -3670,7 +3669,7 @@ public class ButtonHelperFactionSpecific {
         }
 
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             if (game.getTileFromPlanet(planet) == null) {

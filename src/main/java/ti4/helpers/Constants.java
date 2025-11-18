@@ -406,6 +406,19 @@ public class Constants {
     public static final List<String> TOKEN_PLANETS =
             List.of(MIRAGE, OASIS, CRADLE, ILLUSION, PHANTASM, AVERNUS, THUNDERSEDGE);
 
+    // Off-tile planets: Stored in game.getPlanetsInfo(), but don't exist on any tile.
+    public static final List<String> OFF_TILE_PLANETS = List.of(
+            "custodiavigilia",
+            "custodiavigiliaplus",
+            "ghoti",
+            "nevermore",
+            "ocean1",
+            "ocean2",
+            "ocean3",
+            "ocean4",
+            "ocean5",
+            "triad");
+
     public static final String FRONTIER = "frontier";
 
     public static final String CREATION_DATE = "creation_date";

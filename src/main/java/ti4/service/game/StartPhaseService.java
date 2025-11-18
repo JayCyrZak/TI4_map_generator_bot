@@ -294,7 +294,7 @@ public class StartPhaseService {
             for (Player player2 : game.getRealPlayers()) {
                 var exhausted = new ArrayList<String>();
                 for (String planet : player2.getPlanets()) {
-                    if (planet.contains("custodia") || planet.contains("ghoti")) {
+                    if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                         continue;
                     }
                     if (game.getTileFromPlanet(planet) == player2.getHomeSystemTile()) {

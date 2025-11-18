@@ -1745,7 +1745,7 @@ public class ButtonHelperActionCards {
         Player p2 = game.getPlayerFromColorOrFaction(buttonID.split("_")[1]);
         List<Button> buttons = new ArrayList<>();
         for (String planet : p2.getPlanetsAllianceMode()) {
-            if (planet.contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             UnitHolder uH = ButtonHelper.getUnitHolderFromPlanetName(planet, game);

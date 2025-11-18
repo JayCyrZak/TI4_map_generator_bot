@@ -285,23 +285,9 @@ public class WebTileUnitData {
      */
     private static WebTileUnitData extractOffTilePlanetsData(Game game) {
         WebTileUnitData specialTileData = new WebTileUnitData();
-
-        // List of off-tile planets that don't exist on tiles
-        List<String> offTilePlanetIds = List.of(
-                "custodiavigilia",
-                "custodiavigiliaplus",
-                "ghoti",
-                "nevermore",
-                "ocean1",
-                "ocean2",
-                "ocean3",
-                "ocean4",
-                "ocean5",
-                "triad");
-
         Map<String, Planet> planetsInfo = game.getPlanetsInfo();
 
-        for (String planetId : offTilePlanetIds) {
+        for (String planetId : Constants.OFF_TILE_PLANETS) {
             Planet planet = planetsInfo.get(planetId);
             if (planet == null) {
                 continue;

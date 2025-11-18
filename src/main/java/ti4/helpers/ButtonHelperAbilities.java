@@ -1071,7 +1071,7 @@ public class ButtonHelperAbilities {
         List<Button> buttons = new ArrayList<>();
         int coreCount = 0;
         for (String planetName : player.getPlanetsAllianceMode()) {
-            if (planetName.contains("custodia") || planetName.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planetName)) {
                 continue;
             }
             Planet planet = ButtonHelper.getUnitHolderFromPlanetName(planetName, game);
@@ -1102,7 +1102,7 @@ public class ButtonHelperAbilities {
     public static List<Button> getSuperWeaponButtonsPart1(Player player, Game game) {
         List<Button> buttons = new ArrayList<>();
         for (String planetName : player.getPlanetsAllianceMode()) {
-            if (planetName.contains("custodia") || planetName.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planetName)) {
                 continue;
             }
             Planet planet = ButtonHelper.getUnitHolderFromPlanetName(planetName, game);

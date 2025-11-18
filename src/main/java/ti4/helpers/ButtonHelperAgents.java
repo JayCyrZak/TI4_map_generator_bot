@@ -1808,7 +1808,7 @@ public class ButtonHelperAgents {
     public static List<String> getAttachments(Game game, Player player) {
         List<String> legendaries = new ArrayList<>();
         for (String planet : player.getPlanets()) {
-            if (planet.contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             UnitHolder uh = ButtonHelper.getUnitHolderFromPlanetName(planet, game);
@@ -1853,7 +1853,7 @@ public class ButtonHelperAgents {
         List<String> legendaries = new ArrayList<>();
         for (Player player : game.getRealPlayers()) {
             for (String planet : player.getPlanets()) {
-                if (planet.contains("custodia") || planet.contains("ghoti")) {
+                if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                     continue;
                 }
                 PlanetModel model = Mapper.getPlanet(planet);
@@ -2164,7 +2164,7 @@ public class ButtonHelperAgents {
         List<Button> buttons = new ArrayList<>();
 
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Planet p = ButtonHelper.getUnitHolderFromPlanetName(planet, game);

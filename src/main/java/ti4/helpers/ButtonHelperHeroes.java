@@ -672,7 +672,7 @@ public class ButtonHelperHeroes {
     private static List<Button> getAttachmentAttach(Game game, Player player, String type, String attachment) {
         List<Button> buttons = new ArrayList<>();
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Planet p = ButtonHelper.getUnitHolderFromPlanetName(planet, game);

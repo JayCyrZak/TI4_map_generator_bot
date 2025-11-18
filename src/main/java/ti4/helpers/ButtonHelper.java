@@ -690,7 +690,7 @@ public class ButtonHelper {
     public static String playerHasDMZPlanet(Player player, Game game) {
         String dmzPlanet = "no";
         for (String planet : player.getPlanets()) {
-            if (planet.contains("custodia") || planet.contains("ghoti") || planet.startsWith("ocean")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Planet p = game.getPlanetsInfo().get(planet);
@@ -713,7 +713,7 @@ public class ButtonHelper {
             return buttons;
         }
         for (String planet : p1.getPlanets()) {
-            if (planet.contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             UnitHolder unitHolder = getUnitHolderFromPlanetName(planet, game);
@@ -1902,11 +1902,10 @@ public class ButtonHelper {
     public static String getTechSkipAttachments(Game game, String planetName) {
         Tile tile = game.getTile(AliasHandler.resolveTile(planetName));
         if (tile == null) {
-            List<String> fakePlanets = new ArrayList<>(
-                    List.of("custodiavigilia", "ghoti", "ocean1", "ocean2", "ocean3", "ocean4", "ocean5", "triad"));
-            if (!fakePlanets.contains(planetName))
+            if (!Constants.OFF_TILE_PLANETS.contains(planetName)) {
                 BotLogger.warning(
                         new LogOrigin(game), "Couldn't find tile for " + planetName + " in game " + game.getName());
+            }
             return "none";
         }
         UnitHolder unitHolder = tile.getUnitHolders().get(planetName);
@@ -2607,7 +2606,7 @@ public class ButtonHelper {
     public static int getNumberOfPlanetsWithStructuresNotInHS(Player player, Game game) {
         int count = 0;
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Tile tile = game.getTileFromPlanet(planet);
@@ -2635,7 +2634,7 @@ public class ButtonHelper {
     public static int getNumberOfStructuresOnNonHomePlanets(Player player, Game game) {
         int count = 0;
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Tile tile = game.getTileFromPlanet(planet);
@@ -2662,7 +2661,7 @@ public class ButtonHelper {
     public static List<String> getPlanetsWithStructures(Player player, Game game) {
         List<String> planets = new ArrayList<>();
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Planet p = getUnitHolderFromPlanetName(planet, game);
@@ -2687,7 +2686,7 @@ public class ButtonHelper {
     public static List<String> getPlanetsWithUnits(Player player, Game game) {
         List<String> planets = new ArrayList<>();
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             Planet p = getUnitHolderFromPlanetName(planet, game);
@@ -2706,7 +2705,7 @@ public class ButtonHelper {
         int count = 0;
         Tile hs = player.getHomeSystemTile();
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
 
@@ -5615,7 +5614,7 @@ public class ButtonHelper {
     public static void resolveTransitDiodesStep1(Game game, Player player) {
         List<Button> buttons = new ArrayList<>();
         for (String planet : player.getPlanetsAllianceMode()) {
-            if (planet.toLowerCase().contains("custodia") || planet.contains("ghoti") || planet.contains("ocean")) {
+            if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                 continue;
             }
             if (game.getUnitHolderFromPlanet(planet) == null
@@ -7613,10 +7612,8 @@ public class ButtonHelper {
     }
 
     public static Tile getTileOfPlanetWithNoTrait(Player player, Game game) {
-        List<String> fakePlanets = new ArrayList<>(
-                List.of("custodiavigilia", "ghoti", "ocean1", "ocean2", "ocean3", "ocean4", "ocean5", "triad"));
         List<String> ignoredPlanets = new ArrayList<>(Constants.MECATOLS);
-        ignoredPlanets.addAll(fakePlanets);
+        ignoredPlanets.addAll(Constants.OFF_TILE_PLANETS);
 
         for (String planet : player.getPlanets()) {
             Planet planetReal = game.getPlanetsInfo().get(planet.toLowerCase());

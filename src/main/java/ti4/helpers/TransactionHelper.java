@@ -636,8 +636,7 @@ public class TransactionHelper {
             case "Planets" -> {
                 message += " Please choose the planet you wish to " + requestOrOffer + ".";
                 for (String planet : p1.getPlanetsAllianceMode()) {
-                    if (planet.contains("custodia")
-                            || planet.contains("ghoti")
+                    if (Constants.OFF_TILE_PLANETS.contains(planet)
                             || ButtonHelper.getUnitHolderFromPlanetName(planet, game) == null) {
                         continue;
                     }
@@ -662,7 +661,7 @@ public class TransactionHelper {
             case "AlliancePlanets" -> {
                 message += " Please choose the planet you wish to " + requestOrOffer + ".";
                 for (String planet : p1.getPlanets()) {
-                    if (planet.contains("custodia") || planet.contains("ghoti")) {
+                    if (Constants.OFF_TILE_PLANETS.contains(planet)) {
                         continue;
                     }
                     UnitHolder unitHolder = ButtonHelper.getUnitHolderFromPlanetName(planet, game);

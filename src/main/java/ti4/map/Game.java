@@ -4097,25 +4097,18 @@ public class Game extends GameProperties {
                     }
                 }
             }
-            planets.put("custodiavigilia", new Planet("custodiavigilia", new Point(0, 0)));
-            if ("custodiavigilia".equalsIgnoreCase(getStoredValue("terraformedPlanet"))) {
-                planets.get("custodiavigilia").addToken(Constants.ATTACHMENT_TITANSPN_PNG);
+            for (String fakePlanet : Constants.OFF_TILE_PLANETS) {
+                planets.put(fakePlanet, new Planet(fakePlanet, new Point(0, 0)));
             }
             if (isThundersEdge()) {
                 planets.get("custodiavigilia").addToken("attachment_negativeinf.png");
             }
-            planets.put("custodiavigiliaplus", new Planet("custodiavigiliaplus", new Point(0, 0)));
-            planets.put("nevermore", new Planet("nevermore", new Point(0, 0)));
-            planets.put("ghoti", new Planet("ghoti", new Point(0, 0)));
+            if ("custodiavigilia".equalsIgnoreCase(getStoredValue("terraformedPlanet"))) {
+                planets.get("custodiavigilia").addToken(Constants.ATTACHMENT_TITANSPN_PNG);
+            }
             if ("ghoti".equalsIgnoreCase(getStoredValue("terraformedPlanet"))) {
                 planets.get("ghoti").addToken(Constants.ATTACHMENT_TITANSPN_PNG);
             }
-            planets.put("ocean1", new Planet("ocean1", new Point(0, 0)));
-            planets.put("ocean2", new Planet("ocean2", new Point(0, 0)));
-            planets.put("ocean3", new Planet("ocean3", new Point(0, 0)));
-            planets.put("ocean4", new Planet("ocean4", new Point(0, 0)));
-            planets.put("ocean5", new Planet("ocean5", new Point(0, 0)));
-            planets.put("triad", new Planet("triad", new Point(0, 0)));
         }
         return planets.keySet();
     }
